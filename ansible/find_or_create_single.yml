@@ -109,7 +109,7 @@
 
     ### Import a default keypair for node ssh access.
     - name: import and associate the preferred keypair
-      shell: kops create secret --name {{clustername}} sshpublickey admin -i infosec-infra.pub
+      shell: kops create secret --name {{clustername}} sshpublickey admin -i {{sshpubkey}}
       args:
         chdir: ../kops-configs/
       when: current_instances['instances']|length == 0

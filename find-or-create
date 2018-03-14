@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -n "$DEBUG" ]; then
+    PS4=':${LINENO}+'
+    set -x
+fi
+
+ansible-playbook -c local ansible/find_or_create_single.yml -vvv \
+    -e clustername=${CLUSTERNAME} \
+    -e bucketname=${KOPS_STATE_STORE} \
+    -e sshpubkey=${SSHPUBKEY} \
+    -e zoneid=${ZONEID}
